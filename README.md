@@ -1,19 +1,17 @@
 # Particip.AR 
 
-## Proyecto front end en Angular.
+## Angular project
 
-### Instalación y ejecución del proyecto
+### HOW TO INSTALL
+```
+git clone https://github.com/nicolaslucer0/participar-front
+git checkout main
+```
 
-Para obtener el proyecto hacer
+> install npm
+> install Angular CLI
 
-> git clone https://github.com/nicolaslucer0/proyecto-final-front
-> git checkout develop
+```npm start```
 
-Luego instalar NPM + Angular CLI
-Una vez instalado todo ejecutar:
-
-> npm start
-
-**IMPORTANTE:** No ejecutar ng serve, porque levantará sin ejecutar el proxy.
-
+IMPORTANT: We have a proxy, so you need to start the app with `npm start`. Don't use `ng serve`.
 
