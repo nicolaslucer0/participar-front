@@ -8,11 +8,6 @@
 > git checkout main
 > npm install -g npm
 > npm install -g @angular/cli
-```
-
-> install npm and install Angular CLI
-
-```bash
 > npm start
 ```
 
