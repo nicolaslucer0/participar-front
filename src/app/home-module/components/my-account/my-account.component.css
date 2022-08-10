@@ -1,0 +1,26 @@
+.main-container {
+    margin: auto;
+    width: 95%;
+  }
+  
+
+  .card {
+      font-family: Raleway;
+  }
+
+
+
+.table{
+  margin: 1em;
+}
+.table-row {
+  padding: 1em 0;
+  border-bottom: 1px solid lightgray;
+}
+
+.table-column{
+  padding: 0 1em;
+}
+.verificacion{
+  margin: 1em;
+}

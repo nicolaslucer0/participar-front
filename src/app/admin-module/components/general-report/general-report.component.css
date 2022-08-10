@@ -1,0 +1,28 @@
+.card {
+    font-family: Raleway;
+  }
+  .main-container {
+    max-width: 90%;
+    width: 90%;
+    margin: auto;
+    text-align: center;
+  }
+  
+  
+  
+  .verificacion {
+    margin: 1em;
+  }
+  
+  .flex-filters{
+    flex-direction: column;
+  
+  }
+  
+  .chart{
+    width: 70%;
+  }
+
+  .bar-chart {
+    width: 30%;
+  }

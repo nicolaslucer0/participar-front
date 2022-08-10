@@ -1,0 +1,9 @@
+<mat-nav-list>
+    <a (click)="onToggleSidenav()" mat-list-item [routerLink]="['/categorias']" routerLinkActive="router-link-active" >Proyectos&nbsp;<mat-icon>list</mat-icon></a>
+    <a (click)="onToggleSidenav()" *ngIf="isLogged" mat-list-item [routerLink]="['/admin/users']" routerLinkActive="router-link-active" id="users"> Administrar usuarios&nbsp;<mat-icon>supervised_user_circle</mat-icon></a>
+    <a (click)="onToggleSidenav()" *ngIf="isLogged" mat-list-item [routerLink]="['/admin/reports']" routerLinkActive="router-link-active" id="reports"> Reportes&nbsp;<mat-icon>bar_chart</mat-icon></a>
+    <a (click)="onToggleSidenav()" *ngIf="!isLogged" mat-list-item id=contact-fab-button [routerLink]="['/login']">Iniciar &nbsp;<mat-icon>account_circle</mat-icon></a>
+    <a (click)="onToggleSidenav()" *ngIf="isLogged" mat-list-item id=contact-fab-button [routerLink]="['/cuenta']" routerLinkActive="router-link-active" > Mi cuenta&nbsp;<mat-icon>account_circle</mat-icon></a>
+    <a (click)="onToggleSidenav()" *ngIf="isLogged" mat-list-item (click)="logout()"  id=logout-button> Salir&nbsp;<mat-icon>arrow_right_alt</mat-icon></a>
+</mat-nav-list>
+

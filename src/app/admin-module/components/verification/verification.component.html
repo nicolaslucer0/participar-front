@@ -1,0 +1,151 @@
+<ngx-spinner size = "large" [fullScreen] = "true"></ngx-spinner>
+<div class="main-title">Datos del usuario</div>
+<div
+  class="main-container"
+  [ngStyle.lg]="{ margin: '5vh', height: '80vh' }"
+  [ngStyle.md]="{ margin: '5vh', height: '80vh' }"
+  fxLayout="column"
+  fxLayout.xs="column">
+  <div
+    fxFlex="100"
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayout.sm="column"
+    fxLayoutGap="20px">
+    <mat-card class="card" fxFlex="50" fxFlex.sm="100" fxFlexFill>
+      <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+        <div fxFlexFill fxLayout="column" class="table">
+          <div class="table-row" fxLayout="row" fxLayoutAlign="space-between">
+            <div class="table-column">
+              Nombre y apellidp:
+            </div>
+            <div class="table-column">{{ user.name }} {{ user.apellido }}</div>
+          </div>
+          <div class="table-row" fxLayout="row" fxLayoutAlign="space-between">
+            <div class="table-column">
+              DNI:
+            </div>
+            <div class="table-column">
+              {{ user.dni }}
+            </div>
+          </div>
+          <div class="table-row" fxLayout="row" fxLayoutAlign="space-between">
+            <div class="table-column">
+              Email:
+            </div>
+            <div class="table-column">
+              {{ user.email }}
+            </div>
+          </div>
+          <div class="table-row" fxLayout="row" fxLayoutAlign="space-between">
+            <div class="table-column">
+              Fecha de nacimiento:
+            </div>
+            <div class="table-column">
+              {{ user.fecha_nacimiento }}
+            </div>
+          </div>
+          <div class="table-row" fxLayout="row" fxLayoutAlign="space-between">
+            <div class="table-column">
+              Genero:
+            </div>
+            <div class="table-column">
+              {{ user.genero }}
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions> </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="card" fxFlex="50" fxFlex.sm="100">
+      <mat-card-header> </mat-card-header>
+      <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+        <div class="card-title">Foto del DNI</div>
+        <div
+          fxFlexFill
+          fxLayout="row"
+          class="verificacion"
+          fxLayoutAlign="center center">
+          <img
+            src="http://localhost:8080/{{ user.dni_image }}"
+            alt="DNI"
+            class="dni-img"/>
+        </div>
+      </mat-card-content>
+      <mat-card-actions> </mat-card-actions>
+    </mat-card>
+  </div>
+  <div
+    fxFlex="100"
+    fxLayout="row"
+    fxLayout.xs="column"
+    fxLayout.sm="column"
+    fxLayoutGap="20px"
+    style="margin-top: 20px;">
+    <mat-card class="card" fxFlex="50" fxFlex.sm="100">
+      <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+        <div class="card-title">Verificar Usuario</div>
+        <div
+          fxFlexFill
+          fxLayout="column"
+          class="verificacion"
+          fxLayoutAlign="center center">
+          <p>
+            Si considera que los datos son correctos y coinciden con los del documento, puede dar de alta el usuario
+          </p>
+          <button
+            *ngIf="user.user_verified !== 1"
+            mat-stroked-button
+            class="button-primary"
+            [swal]="{ title: '¿Esta seguro que desea verificar el usuario?', text: 'Una vez que se activa, ya podrá votar con normalidad.', showCancelButton: 'true' }" (confirm)="verificarUsuario()" (cancel)="handleRefusalToSetEmail($event)">
+            Verificar
+            <mat-icon>check</mat-icon>
+          </button>
+          <div
+            *ngIf="user.user_verified === 1 || user.rol_id == '1'"
+            fxFlexFill
+            fxLayout="row"
+            class="verificacion"
+            fxLayoutAlign="center center">
+            El usuario se encuentra verificado <mat-icon>check_circle</mat-icon>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions> </mat-card-actions>
+    </mat-card>
+    <mat-card class="card" fxFlex="50" fxFlex.sm="100">
+      <mat-card-header> </mat-card-header>
+      <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+        <div class="card-title">Bloquear Usuario</div>
+        <div
+          fxFlexFill
+          fxLayout="column"
+          class="verificacion"
+          fxLayoutAlign="center center">
+          <p>
+            Si considera de que este usuario no es real o hubo manipulación de datos, puede bloquear el usuario.
+          </p>
+          <button
+          *ngIf="user.user_verified !== 1"
+          mat-stroked-button
+          class="button-primary"
+            [swal]="{ title: '¿Esta seguro que desea bloquear el usuario?', text: 'Si lo bloquea, no podrá volver a acceder ni votar.', showCancelButton: 'true' }" (confirm)="bloquarUsuario()" (cancel)="handleRefusalToSetEmail($event)">
+            
+            Bloquear usuario
+            <mat-icon>block</mat-icon>
+          </button>
+          <div
+          *ngIf="user.user_verified === 1 || user.rol_id == '1'"
+            fxFlexFill
+            fxLayout="row"
+            class="verificacion"
+            fxLayoutAlign="center center">
+            El usuario se encuentra verificado <mat-icon>check_circle</mat-icon>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions> </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

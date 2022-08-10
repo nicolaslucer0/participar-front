@@ -1,0 +1,64 @@
+.about {
+  display: flex;
+  place-content: center;
+  flex-flow: wrap;
+  padding: 7em 2em 0 2em !important;
+  background: transparent;
+  background: rgb(233, 233, 233);
+  color: #02020f;
+}
+
+.about-section {
+  text-align: center;
+}
+
+.about-heading h2 {
+  font-size: 32px;
+}
+
+.about-heading h3 {
+  font-size: 22px;
+}
+
+.about-text {
+  text-align: center;
+  font-weight: lighter;
+}
+
+.material-icons {
+  font-family: "Material Icons";
+  font-weight: normal;
+  font-style: normal;
+  font-size: 68px; /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  width: 2em;
+  white-space: nowrap;
+  direction: ltr;
+  color: white;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: "liga";
+}
+
+
+.description-text{
+  font-weight: lighter;
+  font-size: 15px;
+  padding: 1em;
+}
+
+
+.voto {
+  width: 1.5em;
+}

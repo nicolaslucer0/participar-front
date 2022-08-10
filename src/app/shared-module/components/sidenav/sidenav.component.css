@@ -1,0 +1,21 @@
+a {
+  text-decoration: none;
+  color: white;
+}
+
+a:hover,
+a:active {
+  color: lightgray;
+}
+.mat-list-item {
+  color: white;
+}
+.nav-caption {
+  display: inline-block;
+  padding-left: 6px;
+}
+
+.flex-wrapper {
+    background: black !important;
+  height: 100vh !important;
+}

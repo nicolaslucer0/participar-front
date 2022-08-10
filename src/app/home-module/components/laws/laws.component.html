@@ -1,0 +1,34 @@
+<ngx-spinner size = "large" [fullScreen] = "true"></ngx-spinner>
+    
+<div class="main-container" fxLayout="column" fxLayoutAlign="center center" >
+        <div class="main-title">Categoría: {{currentCategory.nombre}}</div>
+        <div class="content-container" fxLayout="column" fxLayoutAlign="center center" fxFlex="auto">
+
+          <swiper *ngIf="!!laws.length" class="swiper-container" fxFlex="auto" [config]="config" 
+            (indexChange)="onIndexChange($event)" 
+            (swiperTransitionStart)="onSwiperEvent('transitionStart')" 
+            (swiperTransitionEnd)="onSwiperEvent('transitionEnd')">
+            <div *ngFor="let law of laws" class="swiper-slide">
+              <mat-card class="card" matTooltip="Deslice para ver mas proyectos" matTooltipPosition="below">
+                <mat-card-content >
+                  <div class="proyecto">
+                    <div><b>{{ law.codigo }}</b> - {{ law.titulo }}</div>
+                    <div class="description">{{law.descripcion}}</div>
+                  </div>
+                </mat-card-content>
+                
+                <h3>¿Le interesa este proyecto?</h3>
+                <mat-card-actions>
+                  <button class="button ok" matTooltip="Click para ver mas" [routerLink]="['/proyectos/', law.id]" routerLinkActive="router-link-active" ><mat-icon>check</mat-icon></button>
+                  <!-- <button class="swiper-button-next button no" ><mat-icon>clear</mat-icon></button> -->
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </swiper>
+      <div *ngIf="!laws.length">
+          <div class="main-title">Actualmente no tenemos proyectos para esta caterogoría</div>
+      </div>
+
+  </div>
+    
+  </div>

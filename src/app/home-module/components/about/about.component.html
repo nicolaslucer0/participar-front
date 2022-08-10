@@ -1,0 +1,56 @@
+<section class="about mat-typography" [ngStyle]="{'margin-top': '0', 'padding-top': '100px'}" [ngStyle.lt-md]="{'margin-top': '0', 'padding-bottom': '50px'}">
+      <div class="container">
+
+      	<div class="about-section about-heading" fxLayout="column" fxLayoutAlign="center center">
+            <div>
+            <h2 [ngStyle.lt-md]="{'margin-bottom': '15px'}">¿Quienes somos?</h2>
+            </div>
+            <div>
+			<!-- <h3 [ngStyle.xs]="{'font-size': '18px'}" [ngStyle.sm]="{'font-size': '22px'}">Le decisión es nuestra.</h3> -->
+			<p class="description-text">Nuestro equipo cree fielmente que las injusticias que existen en el mundo pueden ser solucionadas si todos nos involucramos un poco mas en las decisiones que toma un gobierno. Por eso, decidimos crear este sistema, donde van a poder votar las leyes y sus artículos, para que exista una voz del pueblo.</p>
+	        </div>
+        </div>
+
+        <div fxLayout="row" fxLayout.lt-md="column" fxLayoutWrap="nowrap" fxLayoutGap="30px">
+        	<div fxFlex="25">
+		          <div fxLayout="column" fxLayoutAlign="center center" [ngStyle.xs]="{'padding': '0 60px'}">
+		            <div>
+						<img src="assets/img/obelisco.png" class="material-icons">
+		            </div>
+		            <h2 class="about-text-title">Participá</h2>
+		            <p class="about-text">Si no te sentis representado.</p>
+				</div>
+			</div>
+
+			<div fxFlex="25">
+				<div fxLayout="column" fxLayoutAlign="center center" [ngStyle.lt-md]="{'padding': '0 60px'}">
+					<div>
+						<img src="assets/img/voto.png" class="material-icons voto">
+		            </div>
+		            <h2 class="about-text-title">Vota</h2>
+		            <p class="about-text">Las leyes que deberían salir y dá a conocer tu opinión.</p>
+				</div>
+			</div>
+			
+			<div fxFlex="25">
+				<div fxLayout="column" fxLayoutAlign="center center" [ngStyle.xs]="{'padding': '0 60px'}">
+					<div>
+						<img src="assets/img/seguro.png" class="material-icons">
+		            </div>
+		            <h2 class="about-text-title">Seguro</h2>
+		            <p class="about-text">Utilizamos Blockchain para que tu votación no pueda ser vulnerada.</p>
+		          </div>
+				</div>
+
+		      <div fxFlex="25">
+				  <div fxLayout="column" fxLayoutAlign="center center" [ngStyle.xs]="{'padding': '0 60px'}">
+		            <div>
+						<img src="assets/img/resultados.png" class="material-icons">
+		            </div>
+		            <h2 class="about-text-title">Resultados</h2>
+		            <p class="about-text">Obtené resultados en tiempo real públicos y de facil acceso.</p>
+		          </div>     
+		      </div>
+        </div>
+      </div>
+</section>

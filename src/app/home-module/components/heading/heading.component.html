@@ -1,0 +1,18 @@
+<section id="heading" class="mat-typography" >
+	<div class="img-fixed"></div>	
+	<div class="container">	
+		<div class="heading-section" fxLayout="column" fxLayoutAlign="center center">
+    		<div [class.animated]="isHeading" [class.fadeInLeft]="isHeading">
+	        <h1 class="heading-title" [ngStyle.xs]="{'font-size': '32px'}" [ngStyle.sm]="{'font-size': '42px'}">La decisión es <b class="celeste">nuestra</b>.</h1>
+	        </div>
+	        <div class="heading-title" [class.animated]="isSubheading" [class.fadeInRight]="isSubheading">
+	        <h2 [ngStyle.xs]="{'font-size': '18px'}" [ngStyle.sm]="{'font-size': '22px'}">Registrate y <i>vot&aacute;</i> los proyectos de ley.</h2>
+	        </div>
+	        <div fxLayout="row" [class.animated]="isHeadingBtn" [class.fadeIn]="isHeadingBtn" [class.heading-btn]="isHeadingBtn">
+        		<a class="heading-button-left" mat-flat-button color="primary" [routerLink]="['/categorias']" routerLinkActive="router-link-active" >Ver proyectos</a>
+		        <a href="#about" class="heading-button-right" mat-stroked-button color="primary">¿C&oacute;mo funciona?</a>
+	    	</div>
+	    </div>
+   </div>
+</section>
+<div id="about"></div>

@@ -1,0 +1,50 @@
+<ngx-spinner size = "large" [fullScreen] = "true"></ngx-spinner>
+<div class="main-title">Reportes y métricas por categoría</div>
+<div fxLayout="column" class="main-container" fxLayoutAlign="center center">
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>Filtrar información</mat-panel-title>
+        <mat-panel-description>Click para ver filtros disponibles</mat-panel-description>
+      </mat-expansion-panel-header>
+      <form [formGroup]="form" class="flex-filters">
+        <div fxLayout="row wrap" fxLayoutGap="20px" fxLayout.sm="column" fxLayout.xs="column" >
+          <!-- FECHA DESDE -->
+          <mat-form-field fxFlex appearance="outline" color="primary" class="form-control">
+            <mat-label>Desde:</mat-label>
+            <input matInput placeholder="Fecha de nacimiento" formControlName="fechaDesde" [matDatepicker]="picker1" (focus)="picker1.open()">
+            <mat-icon matSuffix>calendar_today</mat-icon>
+            <mat-datepicker #picker1></mat-datepicker>
+          </mat-form-field>
+          
+          <!-- FECHA HASTA -->
+          <mat-form-field fxFlex appearance="outline" color="primary" class="form-control">
+            <mat-label>Hasta:</mat-label>
+            <input matInput placeholder="Fecha de nacimiento" formControlName="fechaHasta" [matDatepicker]="picker2" (focus)="picker2.open()">
+            <mat-icon matSuffix>calendar_today</mat-icon>
+            <mat-datepicker #picker2></mat-datepicker>
+          </mat-form-field>
+          
+        </div>
+        
+        <!-- BUTTONS -->
+        <div fxLayout="row wrap" fxFlex fxLayoutGap="50px">
+          
+        <button mat-stroked-button class="button-primary" (click)="filter()">Filtrar</button>
+        
+        <button mat-stroked-button class="button-primary" (click)="clearFilters()">Limpiar filtros</button>
+        
+      </div>
+    </form>
+  </mat-expansion-panel>
+    <mat-card class="chart">
+      <canvas baseChart
+      [datasets]="barChartData"
+      [labels]="barChartLabels"
+      [options]="barChartOptions"
+      [legend]="barChartLegend"
+      [chartType]="barChartType">
+    </canvas>
+  </mat-card>
+
+
+</div>

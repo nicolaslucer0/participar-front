@@ -1,0 +1,153 @@
+<ngx-spinner size = "large" [fullScreen] = "true"></ngx-spinner>
+<div fxLayout="column" class="main-container" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="center center">
+  <mat-card>
+    <mat-card-header class="center" fxLayout="row" fxLayout.lt-md="column wrap" fxLayoutGap="20px" fxLayoutGap.lt-md="0px" gdAlignColumns="center">
+    </mat-card-header>
+    <mat-card-content>
+      <mat-horizontal-stepper style="margin: 0; padding: 0" linear="true" #stepper>
+        <mat-step [stepControl]="firstFormGroup" style="margin: 0; padding: 0">
+          <form [formGroup]="firstFormGroup" fxLayout="column" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="center center">
+            <ng-template matStepLabel>Datos personales</ng-template>
+            <!-- NOMBRES -->
+            <mat-form-field appearance="outline" color="primary" fxFill class="form-control">
+              <mat-label>Nombre</mat-label>
+              <input matInput placeholder="Ingrese su nombre" formControlName="nombre" required>
+              <mat-icon matSuffix>account_box</mat-icon>
+              <mat-error *ngIf="firstFormGroup.get('nombre').errors?.required">
+                Nombre <strong>requerido.</strong>
+              </mat-error>
+            </mat-form-field>
+            <!-- APELLIDOS -->
+            <mat-form-field appearance="outline" color="primary" fxFill class="form-control">
+              <mat-label>Apellido</mat-label>
+              <input matInput placeholder="Ingrese su apellido" formControlName="apellido" required>
+              <mat-icon matSuffix>account_box</mat-icon>
+              <mat-error *ngIf="firstFormGroup.get('apellido').errors?.required">
+                Apellido <strong>requerido.</strong>
+              </mat-error>
+            </mat-form-field>
+            <!-- FECHA DE NACIMIENTO -->
+            <mat-form-field appearance="outline" color="primary" fxFill class="form-control">
+              <mat-label>Fecha de nacimiento</mat-label>
+              <input matInput placeholder="Fecha de nacimiento" formControlName="fechaNacimiento" [matDatepicker]="picker" required (focus)="picker.open()" (click)="picker.toggle()">
+              <mat-icon matSuffix>calendar_today</mat-icon>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="firstFormGroup.get('fechaNacimiento').errors?.required">
+                Fecha <strong>requerida.</strong>
+              </mat-error>
+              <mat-error *ngIf="firstFormGroup.get('fechaNacimiento').errors?.isOldEnough">
+                Necesita ser mayor de <strong>16 a&ntilde;os.</strong>
+              </mat-error>
+            </mat-form-field>
+            <!-- DNI -->
+            <mat-form-field appearance="outline" color="primary" fxFill class="form-control">
+              <mat-label>DNI</mat-label>
+              <input matInput placeholder="Ingrese el DNI" type="number" formControlName="dni" required>
+              <mat-icon matSuffix>fingerprint</mat-icon>
+              <mat-error *ngIf="firstFormGroup.get('dni').errors?.required">
+                DNI <strong>requerido.</strong>
+              </mat-error>
+              <mat-error *ngIf="firstFormGroup.get('dni').errors?.pattern">
+                DNI <strong>inv&aacute;lido.</strong>
+              </mat-error>
+            </mat-form-field>
+            <!-- GENERO -->
+            <mat-form-field appearance="outline" color="primary" fxFill class="form-control">
+              <mat-label>G&eacute;nero</mat-label>
+              <mat-select #genderSelect required formControlName="genero" (focus)="genderSelect.open()" (selectionChange)="genderSelect.close()">
+                <mat-option value="F">Femenino</mat-option>
+                <mat-option value="M">Masculino</mat-option>
+              </mat-select>
+              <mat-icon matSuffix>wc</mat-icon>
+              <mat-error *ngIf="firstFormGroup.get('genero').errors?.required">
+                G&eacute;nero <strong>requerido.</strong>
+              </mat-error>
+            </mat-form-field>
+            <div>
+              <button class="button-primary" mat-raised-button mat-button matStepperNext [disabled]="!firstFormGroup.valid">Continuar</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step>
+          <form [formGroup]="secondFormGroup" fxLayout="column" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="center center">
+            <!-- PROVINCIA -->
+            <ng-template matStepLabel>Locación</ng-template>
+            <mat-form-field appearance="outline" color="primary" fxFill>
+              <input matInput placeholder="Provincia" aria-label="Provincia" [matAutocomplete]="auto" formControlName="provincia">
+              <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="selectProvincia($event)">
+                <mat-option *ngFor="let provincia of filteredProvincias | async" [value]="provincia">
+                  <span>{{provincia.nombre}}</span>
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <!-- MUNICIPIO -->
+            <mat-form-field *ngIf="!!municipiosJson.length" appearance="outline" color="primary" fxFill>
+              <input matInput placeholder="Municipio" aria-label="Municipio" [matAutocomplete]="auto" formControlName="municipio">
+              <mat-autocomplete [displayWith]="displayFn" #auto="matAutocomplete" (optionSelected)="selectLocalidad($event)">
+                <mat-option *ngFor="let municipio of filteredMunicipios | async" [value]="municipio">
+                  <span>{{municipio.nombre}}</span>
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <!-- LOCALIDAD -->
+            <mat-form-field *ngIf="!!localidadesJson.length" appearance="outline" color="primary" fxFill>
+              <input matInput placeholder="Localidad" aria-label="Localidad" [matAutocomplete]="auto" formControlName="localidad">
+              <mat-autocomplete  #auto="matAutocomplete" [displayWith]="displayFn">
+                <mat-option *ngFor="let localidad of filteredLocalidades | async" [value]="localidad">
+                  <span>{{localidad.nombre}}</span>
+                </mat-option>
+              </mat-autocomplete>
+            </mat-form-field>
+            <div>
+              <button class="button-primary" mat-raised-button mat-button matStepperNext [disabled]="!secondFormGroup.valid">Continuar</button>
+            </div>
+          </form>
+        </mat-step>
+        <mat-step [stepControl]="thirdFormGroup"> 
+          <form [formGroup]="thirdFormGroup" fxLayout="column" fxLayout.xs="column" fxLayout.sm="column" fxLayoutAlign="center center">
+            <ng-template matStepLabel>Seguridad</ng-template>
+            <!-- EMAIL -->
+            <mat-form-field appearance="outline" color="primary" fxFill class="form-control">
+              <mat-label>Ingrese un email</mat-label>
+              <input matInput placeholder="Ingrese un email" type="email" formControlName="email">
+              <mat-icon matSuffix>mail</mat-icon>
+              <mat-error *ngIf="thirdFormGroup.get('email').errors?.required">
+                Email <strong>requerido.</strong>
+              </mat-error>
+              <mat-error *ngIf="thirdFormGroup.get('email').errors?.email">
+                Email <strong>inv&aacute;lido.</strong>
+              </mat-error>
+            </mat-form-field>
+            <!-- CONTRASEÑA -->
+            <mat-form-field appearance="outline" color="primary" fxFill class="form-control">
+              <mat-label>Contrase&ntilde;a </mat-label>
+              <input matInput placeholder="Ingrese la contrase&ntilde;a" type="password" formControlName="password">
+              <mat-icon matSuffix>vpn_key</mat-icon>
+              <mat-error *ngIf="thirdFormGroup.get('password').errors?.required && thirdFormGroup.get('password').touched">
+                Contrase&ntilde;a <strong>requerida.</strong>
+              </mat-error>
+            </mat-form-field>
+            <!-- REPETIR CONTRASEÑA -->
+            <mat-form-field appearance="outline" color="primary" fxFill class="form-control">
+              <mat-label>Repita la contrase&ntilde;a </mat-label>
+              <input matInput placeholder="Repita la contrase&ntilde;a" type="password" formControlName="secondPassword" (blur)="passwordMatches()">
+              <mat-icon matSuffix>vpn_key</mat-icon>
+              <mat-error *ngIf="thirdFormGroup.get('secondPassword').errors?.required && thirdFormGroup.get('secondPassword').touched">
+                Contrase&ntilde;a <strong>requerida.</strong>
+              </mat-error>
+              <mat-error *ngIf="passwordMatch">
+                Las contrase&ntilde;as <strong>no coinciden.</strong>
+              </mat-error>
+            </mat-form-field>
+            <div>
+              <button class="button-primary" (click)="submitForm()" mat-raised-button mat-button matStepperNext [disabled]="!thirdFormGroup.valid">Registrarse</button>
+            </div>
+          </form>
+        </mat-step>
+      </mat-horizontal-stepper>
+    </mat-card-content>
+    <div fxLayout="row" fxLayoutAlign="center center">
+      <button fxflex class="button-primary" mat-raised-button [routerLink]="['/login']" routerLinkActive="router-link-active" >Volver</button>
+    </div>
+  </mat-card>
+</div>

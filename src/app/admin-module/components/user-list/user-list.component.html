@@ -1,0 +1,36 @@
+<div class="main-title">Verificación de usuario</div>
+<div class="main-container" [ngStyle.lg]="{'margin': '5vh', 'height' : '80vh'}" [ngStyle.md]="{'margin': '5vh', 'height' : '80vh'}" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="left" fxLayoutGap="20px">
+  <div fxFlex="100" fxFlexFill fxLayout="column" fxLayoutGap="20px">
+    <mat-card class="card">
+      <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+        <div fxFlexFill fxLayout="row" class="verificacion" fxLayoutAlign="center center">
+            <mat-table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                <ng-container matColumnDef="dni">
+                    <mat-header-cell *matHeaderCellDef>DNI</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.dni}} </mat-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="name">
+                    <mat-header-cell *matHeaderCellDef>Nombre</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="apellido">
+                    <mat-header-cell *matHeaderCellDef>Apellido</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.apellido}} </mat-cell>
+                </ng-container>
+                
+                <ng-container matColumnDef="ver">
+                    <mat-header-cell *matHeaderCellDef>Validar</mat-header-cell>
+                    <mat-cell *matCellDef="let element"> <button class="button-primary" mat-stroked-button [routerLink]="['/admin/users/', element.id]" routerLinkActive="router-link-active" >Ver mas <mat-icon>add</mat-icon></button> </mat-cell>
+                </ng-container>
+                
+                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+            </mat-table>
+        </div>
+      </mat-card-content>
+      <mat-card-actions> </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

@@ -1,0 +1,123 @@
+<ngx-spinner size = "large" [fullScreen] = "true"></ngx-spinner>
+<div class="main-container">
+  <div class="main-title">Reportes y métricas generales</div>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>Filtrar información</mat-panel-title>
+      <mat-panel-description>Click para ver filtros disponibles</mat-panel-description>
+    </mat-expansion-panel-header>
+    <form [formGroup]="form" class="flex-filters">
+      <div fxLayout="row wrap" fxLayout.lt-md="column" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="20px">
+        
+        <!-- PROYECTOS -->
+        <mat-form-field fxFlex appearance="outline" color="primary">
+          <mat-label>Filtrar por proyecto</mat-label>
+          <input matInput aria-label="Proyecto" [matAutocomplete]="proyecto" formControlName="proyecto"/>
+          <mat-autocomplete #proyecto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let proyecto of filteredProyectos | async" [value]="proyecto">
+              <span>{{ proyecto.nombre }}</span>
+            </mat-option>
+          </mat-autocomplete>
+          <mat-icon matSuffix >file_copy</mat-icon>
+        </mat-form-field>
+        
+        <!-- CATEGORIAS-->
+        <mat-form-field fxFlex appearance="outline" color="primary">
+          <mat-label>Filtrar por categorías</mat-label>
+          <mat-select #categoriaSelect formControlName="categoria" (focus)="categoriaSelect.open()" (selectionChange)="categoriaSelect.close()">
+            <mat-option *ngFor="let category of categories" [value]="category.id">
+              {{ category.nombre }}
+            </mat-option>
+          </mat-select>
+          <mat-icon matSuffix>category</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row wrap" fxLayoutGap="20px" fxLayout.sm="column" fxLayout.xs="column">
+
+        <!-- PROVINCIA -->
+        <mat-form-field appearance="outline" color="primary" fxFlex>
+          <mat-label>Filtrar por provincia</mat-label>
+          <input matInput aria-label="Provincia" [matAutocomplete]="auto" formControlName="provincia"/>
+          <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+            <mat-option *ngFor="let provincia of filteredProvincias | async" [value]="provincia">
+              <span>{{ provincia.nombre }}</span>
+            </mat-option>
+          </mat-autocomplete>
+          <mat-icon matSuffix>location_on</mat-icon>
+        </mat-form-field>
+
+        <!-- GENERO -->
+        <mat-form-field fxFlex appearance="outline" color="primary">
+          <mat-label>Filtrar por g&eacute;nero</mat-label>
+          <mat-select #genderSelect formControlName="genero" (focus)="genderSelect.open()" (selectionChange)="genderSelect.close()">
+            <mat-option value="F">Femenino</mat-option>
+            <mat-option value="M">Masculino</mat-option>
+          </mat-select>
+          <mat-icon matSuffix>wc</mat-icon>
+        </mat-form-field>
+      </div>
+
+      <div fxLayout="row wrap" fxLayoutGap="20px" fxLayout.sm="column" fxLayout.xs="column">
+        <!-- EDAD DESDE -->
+        <mat-form-field appearance="outline" color="primary" fxFlex>
+          <mat-label>Edad desde:</mat-label>
+          <input matInput placeholder="" type="number" name="edadDesde" formControlName="edadDesde"/>
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+        
+        <!-- EDAD HASTA -->
+        <mat-form-field appearance="outline" color="primary" fxFlex>
+          <mat-label>Edad hasta:</mat-label>
+          <input matInput placeholder="" type="number" name="edadHasta" formControlName="edadHasta" />
+          <mat-icon matSuffix>person</mat-icon>
+        </mat-form-field>
+        
+      </div>
+      
+      <!-- BUTTONS -->
+      <div fxLayout="row wrap" fxFlex fxLayoutGap="50px">
+        
+        <button mat-stroked-button class="button-primary" (click)="filter()">Filtrar <mat-icon>filter_list</mat-icon></button>
+      
+        <button mat-stroked-button class="button-primary" (click)="clearFilters()">Limpiar filtros <mat-icon>clear</mat-icon></button>
+      
+      </div>
+    </form>
+  </mat-expansion-panel>
+  <div fxFlexFill fxLayout="row" fxLayout.sm="column" fxLayout.xs="column" class="verificacion" fxLayoutAlign="center center">
+    <mat-card fxFlex fxFlexFill>
+        <canvas baseChart
+        [datasets]="barChartData"
+        [labels]="barChartLabels"
+        [options]="barChartOptions"
+        [legend]="barChartLegend"
+        [chartType]="barChartType">
+      </canvas>
+    </mat-card>
+    <mat-card fxFlex fxFlexFill>
+      <canvas
+      baseChart
+      [data]="pieChartData"
+      [colors]="pieChartColors"
+      [legend]="pieChartLegend"
+      [labels]="pieChartLabels"
+      [chartType]="pieChartType"
+      [options]="pieChartOptions">
+    </canvas>
+  </mat-card>
+    
+    <!-- <mat-card class="chart">
+      <canvas
+        baseChart
+        [data]="pieChartData"
+        [labels]="pieChartLabels"
+        [chartType]="pieChartType"
+        [options]="pieChartOptions"
+        [colors]="pieChartColors"
+        [legend]="pieChartLegend"
+      >
+      </canvas>
+    </mat-card> -->
+  </div>
+</div>

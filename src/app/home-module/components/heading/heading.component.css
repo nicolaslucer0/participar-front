@@ -1,0 +1,56 @@
+/* --------- heading --------- */
+.img-fixed{
+  position: absolute;
+  height: inherit;
+  width: 100%;
+  background-image: url("/assets/img/argentina.gif");
+  background-image: url("/assets/img/congreso.jpg");
+  background-size: cover;
+  filter: brightness(30%);
+}
+.container {
+  height: 93vh;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+}
+#heading {
+  height: 100vh;
+  margin: 0;
+  align-items: center;
+}
+.heading-title {
+  color: white;
+}
+.heading-section{
+  text-align: center;
+}
+
+.heading-section h1{
+  font-size: 50px;
+}
+
+.heading-section h2{
+  margin-top: 30px;
+}
+
+.heading-button-left{
+  min-width: 144px;
+  max-width: 100%;
+  background-color: white;
+  color: black;
+}
+
+.heading-button-right{
+  margin-left: 10px;
+  color: white;
+  border: 1px white solid;
+}
+
+.celeste{
+  color: #1976d2;
+}
+
+.spacer {
+  background: transparent !important;
+}

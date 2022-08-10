@@ -1,0 +1,42 @@
+<ngx-spinner size = "large" [fullScreen] = "true"></ngx-spinner>
+<div fxLayout="column">
+
+    <div class="main-title">Elija un reporte.</div>
+    <div fxFlex fxLayout.lt-sm="column" fxLayout.gt-md="row wrap" fxLayout.md="row wrap" fxLayoutAlign.gt-md="center center" fxLayoutAlign.md="center center">
+        <mat-card fxFlex.lt-sm="100" fxFlex.gt-md="20" fxFlex.md="20" class="card"  [routerLink]="['/admin/report/general']" routerLinkActive="router-link-active" >
+            <mat-card-content>
+                <img mat-card-image src="assets/img/report/general.jpg" alt="General">
+            </mat-card-content>
+            <mat-card-actions>
+                <div class="card-title">General</div> 
+            </mat-card-actions>
+        </mat-card>
+
+        <mat-card fxFlex.lt-sm="100" fxFlex.gt-md="20" fxFlex.md="20" class="card"  [routerLink]="['/admin/report/proyectos']" routerLinkActive="router-link-active" >
+          <mat-card-content>
+              <img mat-card-image src="assets/img/report/project.jpg" alt="Por proyecto">
+          </mat-card-content>
+          <mat-card-actions>
+              <div class="card-title">Por proyecto</div> 
+          </mat-card-actions>
+      </mat-card>
+
+      <mat-card fxFlex.lt-sm="100" fxFlex.gt-md="20" fxFlex.md="20" class="card"  [routerLink]="['/admin/report/zona']" routerLinkActive="router-link-active" >
+        <mat-card-content>
+            <img mat-card-image src="assets/img/report/location.png" alt="Por zona">
+        </mat-card-content>
+        <mat-card-actions>
+            <div class="card-title">Por zona</div> 
+        </mat-card-actions>
+    </mat-card>
+
+    <mat-card fxFlex.lt-sm="100" fxFlex.gt-md="20" fxFlex.md="20" class="card"  [routerLink]="['/admin/report/categorias']" routerLinkActive="router-link-active" >
+      <mat-card-content>
+          <img mat-card-image src="assets/img/report/category.png" alt="Por categoría">
+      </mat-card-content>
+      <mat-card-actions>
+          <div class="card-title">Por categorías</div> 
+      </mat-card-actions>
+  </mat-card>
+    </div>
+</div>

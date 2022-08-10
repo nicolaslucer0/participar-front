@@ -1,0 +1,80 @@
+<ngx-spinner size="large" [fullScreen]="true"></ngx-spinner>
+
+<div class="main-container">
+  <mat-card fxLayout="column" class="card" fxFlexFill >
+    <mat-card-header>
+      <mat-card-title>{{ proyecto.titulo }}</mat-card-title>
+      <mat-card-subtitle>{{ proyecto.codigo }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content  fxFlex fxLayout="column">
+      <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title> Para leer descripción completa, haga click aquí. </mat-panel-title>
+          </mat-expansion-panel-header>
+          {{ proyecto.descripcion }}
+        </mat-expansion-panel>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        </mat-expansion-panel>
+      </mat-accordion>
+
+      <h4>Artículos:</h4>
+
+      <mat-card fxFlex fxLayout="column" fxLayout.gt-md="row" fxLayout.md="row" class="articulo" *ngFor="let articulo of proyecto.articulos">
+        <mat-card-content>
+          <b>{{ articulo.numero }}</b> - {{ articulo.contenido }}
+          <div *ngIf="articulo.requisitos">
+            <ul *ngFor="let requisito of articulo.requisitos">
+              <li>{{ requisito.texto }}</li>
+            </ul>
+          </div>
+        </mat-card-content>
+        
+        <div *ngIf="isLogged" class="botones" fxFlexAlign="center">
+          <button mat-button class="button-articulo button-like ok" [disabled]="!articulo.canVote" (confirm)="votarArticulo(articulo.id, 'A favor')" (cancel)="handleRefusalToSetEmail($event)"  [swal]="{ title: '¿Esta seguro?', text: 'Una vez que vote, no podrá volver a votar o cambiar su voto.', showCancelButton: 'true'}">
+            <mat-icon>thumb_up</mat-icon> {{ articulo.positivo }}
+          </button>
+          <button mat-button class="button-articulo button-dislike no" [disabled]="!articulo.canVote" (confirm)="votarArticulo(articulo.id, 'En contra')" (cancel)="handleRefusalToSetEmail($event)" [swal]="{ title: '¿Esta seguro?', text: 'Una vez que vote, no podrá volver a votar o cambiar su voto.', showCancelButton: 'true'}">
+            <mat-icon>thumb_down</mat-icon> {{ articulo.negativo }}
+          </button>
+        </div>
+
+        <div *ngIf="!isLogged">
+          <button mat-button matTooltip="Deberá iniciar sesión para votar" matTooltipPosition="above" [routerLink]="['/login']" routerLinkActive="router-link-active">Iniciá sesión para votar</button>
+        </div>
+      </mat-card>
+
+      <div *ngIf="proyecto.canVote" class="botones" fxFlexAlign="center">
+        <button mat-button class="button positivo" [disabled]="!proyecto.canVote" [swal]="{title: '¿Esta seguro que desea votar a favor?',text:'Una vez que vote, no podrá volver a votar o cambiar su voto.',showCancelButton: 'true'}"(confirm)="votar('A favor')"(cancel)="handleRefusalToSetEmail($event)">
+            Estoy de acuerdo <mat-icon>check</mat-icon>
+          </button>
+
+        <button mat-button class="button negativo" [disabled]="!proyecto.canVote" [swal]="{   title: '¿Esta seguro que desea votar en contra?',   text:     'Una vez que vote, no podrá volver a votar o cambiar su voto.',   showCancelButton: 'true' }" (confirm)="votar('En contra')" (cancel)="handleRefusalToSetEmail($event)">
+          Estoy en contra <mat-icon>clear_circle</mat-icon>
+        </button>
+
+        <button mat-button class="button abstencion" [disabled]="!proyecto.canVote" [swal]="{ title: '¿Esta seguro que desea abtenerse?', text: 'Una vez que vote, no podrá volver a votar o cambiar su voto.', showCancelButton: 'true' }" (confirm)="votar('abstencion')" (cancel)="handleRefusalToSetEmail($event)" >
+            Me astengo a votar <mat-icon>remove</mat-icon>
+        </button>
+      </div>
+      <div class="yaVoto" *ngIf="!proyecto.canVote">
+        Usted ya ha votado esta ley, gracias por participar.
+      </div>
+      <br />
+      <div class="chart" *ngIf="!proyecto.canVote">
+        <h4>Resultados hasta el momento:</h4>
+        <canvas baseChart [datasets]="barChartData" [options]="barChartOptions" [labels]="barChartLabels" [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType"></canvas>
+      </div>
+    </mat-card-content>
+    <mat-card-actions fxFlexAlign="center center">
+      <button
+        mat-raised-button
+        [routerLink]="['/categorias']"
+        routerLinkActive="router-link-active"
+      >
+        Volver
+      </button>
+    </mat-card-actions>
+  </mat-card>
+
+</div>

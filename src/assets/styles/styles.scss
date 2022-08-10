@@ -1,0 +1,153 @@
+@import "~@angular/material/theming";
+@import "nglp.scss";
+@import "animation/nglp-animations.scss";
+
+body {
+  margin: 0;
+  font-family: "Raleway" !important;
+}
+/* ------ scroll off -------- */
+
+.scrollOff {
+  overflow: hidden !important;
+}
+
+/* ------ section -------- */
+
+section {
+  margin-top: 135px;
+  margin-bottom: 135px;
+}
+
+/* ------ icons -------- */
+
+.material-icons {
+  color: mat-color($nglp-accent, 700);
+}
+
+.text-muted {
+  color: mat-color($nglp-accent, A700);
+}
+
+/* ------ navigation -------- */
+
+.navigation-toolbar {
+  background-color: mat-color($nglp-primary);
+  height: 8vh !important;
+}
+
+/* ------ mobile logo -------- */
+
+#mobilelogo img {
+  padding-top: 10px;
+  width: auto;
+}
+
+/* ------ about hover effect -------- */
+
+.about-hover-effect {
+  @include mat-elevation-transition;
+  @include mat-elevation(8);
+}
+
+.about-hover-effect .mat-card {
+  background-color: mat-color($nglp-accent, 100);
+}
+
+.about-hover-effect i {
+  color: mat-color($nglp-accent, A700);
+}
+
+.spacer {
+  height: 10vh;
+  background: #010108;
+  background: -moz-linear-gradient(45deg, #010108 0%, #040431 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, #040431), color-stop(100%, #040431));
+  background: -webkit-linear-gradient(45deg, #010108 0%, #040431 100%);
+  background: -o-linear-gradient(45deg, #010108 0%, #040431 100%);
+  background: -ms-linear-gradient(45deg, #010108 0%, #040431 100%);
+  background: linear-gradient(45deg, #010108 0%, #040431 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000f', endColorstr='#050047', GradientType=1 );
+}
+
+.mat-sidenav {
+  height: 100%;
+  background: #010108;
+  background: -moz-linear-gradient(45deg, #010108 0%, #040431 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, #040431), color-stop(100%, #040431));
+  background: -webkit-linear-gradient(45deg, #010108 0%, #040431 100%);
+  background: -o-linear-gradient(45deg, #010108 0%, #040431 100%);
+  background: -ms-linear-gradient(45deg, #010108 0%, #040431 100%);
+  background: linear-gradient(45deg, #010108 0%, #040431 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000f', endColorstr='#050047', GradientType=1 );
+}
+
+.mat-list-item-content {
+  justify-content: space-between;
+  border-bottom: #171717;
+}
+
+.button-primary {
+  background: #010108;
+  background: -moz-linear-gradient(45deg, #010108 0%, #040431 100%);
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, #040431), color-stop(100%, #040431));
+  background: -webkit-linear-gradient(45deg, #010108 0%, #040431 100%);
+  background: -o-linear-gradient(45deg, #010108 0%, #040431 100%);
+  background: -ms-linear-gradient(45deg, #010108 0%, #040431 100%);
+  background: linear-gradient(45deg, #010108 0%, #040431 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000f', endColorstr='#050047', GradientType=1 );
+  color: white !important;
+}
+
+.main-title {
+  font-size: 30px;
+  width: 100%;
+  margin: 1em 0;
+  font-weight: light;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 20px;
+  width: 100%;
+  margin: 1em 0;
+  font-weight: normal;
+  text-align: center;
+}
+
+.swal2-confirm{
+  background: #010108 !important;
+  background: -moz-linear-gradient(45deg, #010108 0%, #040431 100%) !important;
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, #040431), color-stop(100%, #040431)) !important;
+  background: -webkit-linear-gradient(45deg, #010108 0%, #040431 100%) !important;
+  background: -o-linear-gradient(45deg, #010108 0%, #040431 100%) !important;
+  background: -ms-linear-gradient(45deg, #010108 0%, #040431 100%) !important;
+  background: linear-gradient(45deg, #010108 0%, #040431 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000f', endColorstr='#050047', GradientType=1 ) !important;
+}
+
+
+.button-cancel, .swal2-cancel {
+  background: rgba(51,0,0,1) !important;
+  background: -moz-linear-gradient(45deg, rgba(51,0,0,1) 0%, rgba(163,0,0,1) 100%) !important;
+  background: -webkit-gradient(left bottom, right top, color-stop(0%, rgba(51,0,0,1)), color-stop(100%, rgba(163,0,0,1))) !important;
+  background: -webkit-linear-gradient(45deg, rgba(51,0,0,1) 0%, rgba(163,0,0,1) 100%) !important;
+  background: -o-linear-gradient(45deg, rgba(51,0,0,1) 0%, rgba(163,0,0,1) 100%) !important;
+  background: -ms-linear-gradient(45deg, rgba(51,0,0,1) 0%, rgba(163,0,0,1) 100%) !important;
+  background: linear-gradient(45deg, rgba(51,0,0,1) 0%, rgba(163,0,0,1) 100%) !important;
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#330000', endColorstr='#a30000', GradientType=1 ) !important;
+}
+
+header .mat-icon {
+  margin-left: 2px;
+  color: rgb(112, 149, 252);
+}
+
+.button-primary .mat-icon {
+  margin-left: 2px;
+  color: white;
+}
+
+.mat-icon {
+  color: #010108;
+}

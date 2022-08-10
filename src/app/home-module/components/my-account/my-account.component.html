@@ -1,0 +1,72 @@
+<div class="main-container" [ngStyle.lg]="{'margin': '5vh', 'height' : '80vh'}" [ngStyle.md]="{'margin': '5vh', 'height' : '80vh'}" fxLayout="row" fxLayout.xs="column" fxLayoutAlign="left" fxLayoutGap="20px">
+  <mat-card fxFlex="30" fxLayout="column" fxFlexFill class="card">
+    <img mat-card-image src="assets/img/perfil.png" alt="Foto de perfil" />
+    <mat-card-content
+      fxLayout="row"
+      fxLayout.xs="column"
+      fxLayoutAlign="center center"
+    >
+      <div class="main-title">{{ user.name }} {{ user.apellido }}</div>
+    </mat-card-content>
+    <mat-card-actions> </mat-card-actions>
+  </mat-card>
+
+  <div fxFlex="70" fxFlexFill fxLayout="column" fxLayoutGap="20px">
+    <mat-card class="card">
+      <mat-card-header> </mat-card-header>
+      <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+        <div class="main-title">Datos del usuario</div>
+        <div fxFlexFill fxLayout="column" class="table">
+          <div class="table-row" fxLayout="row" fxLayoutAlign="space-between">
+            <div class="table-column">
+              DNI:
+            </div>
+            <div class="table-column">
+              {{ user.dni }}
+            </div>
+          </div>
+          <div class="table-row" fxLayout="row" fxLayoutAlign="space-between">
+            <div class="table-column">
+              Email:
+            </div>
+            <div class="table-column">
+              {{ user.email }}
+            </div>
+          </div>
+          <div class="table-row" fxLayout="row" fxLayoutAlign="space-between">
+            <div class="table-column">
+              Fecha de nacimiento:
+            </div>
+            <div class="table-column">
+              {{ user.fecha_nacimiento }}
+            </div>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions> </mat-card-actions>
+    </mat-card>
+
+    <mat-card class="card">
+      <mat-card-header> </mat-card-header>
+      <mat-card-content fxLayout="column" fxLayoutAlign="center center">
+        <div class="main-title">Verificación de usuario</div>
+        <div *ngIf="user.user_verified === 1" fxFlexFill fxLayout="row" class="verificacion" fxLayoutAlign="center center">
+          El usuario se encuentra verificado <mat-icon>check_circle</mat-icon>
+        </div>
+        <div *ngIf="user.user_verified === 0 && !!user.dni_image" fxFlexFill fxLayout="row" class="verificacion" fxLayoutAlign="center center">
+          Ya se ha subido la imagen, esperando la aprobación <mat-icon>check_circle</mat-icon>
+        </div>
+        <div *ngIf="user.user_verified !== 1 && !user.dni_image" fxFlex fxFlexFill fxLayout="column" class="verificacion" fxLayoutAlign="center center">
+          <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <br>
+            <input accept="image/*" id="image-uploader" (change)="onSelectFile($event)" type="file" #fileupload name="myFile" [(ngModel)]="myFile" />
+            <br>
+            <br>
+            <button mat-stroked-button>Subir imagen</button>
+          </form>
+        </div>
+      </mat-card-content>
+      <mat-card-actions> </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

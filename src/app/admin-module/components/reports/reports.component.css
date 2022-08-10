@@ -1,0 +1,42 @@
+.main-container {
+  background-color: rgb(233, 233, 233);
+}
+
+.card {
+  margin: 1rem;
+  padding: 2em !important;
+  text-align: center;
+  background: white;
+  border: 1px solid #a9c7ff;
+  color: black;
+  transition: 0.4s;
+}
+
+.card:hover {
+  background: white;
+  color: black;
+  cursor: pointer;
+  transform: translateY(-10px);
+  box-shadow: 0 20px 11px 0px lightgrey;
+}
+
+
+.botones {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+}
+
+.mat-card-image {
+  width: 15em;
+}
+
+.mat-card-content {
+  max-height: 30vh;
+  min-height: 30vh;
+  height: 30vh;
+}
+
+.card-title {
+  font-size: 20px;
+}

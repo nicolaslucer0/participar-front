@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "nombre": "Salud",
+    "identificador": "salud",
+    "imagen": "assets/img/categorias/salud.png"
+  },
+  {
+    "id": "2",
+    "nombre": "Social",
+    "identificador": "social",
+    "imagen": "assets/img/categorias/social.png"
+  },
+  {
+    "id": "3",
+    "nombre": "Obra pública",
+    "identificador": "obra",
+    "imagen": "assets/img/categorias/obra.png"
+},
+{
+    "id": "4",
+    "nombre": "Educación",
+    "identificador": "educacion",
+    "imagen": "assets/img/categorias/educacion.svg"
+},
+{
+    "id": "4",
+    "nombre": "Trabajo",
+    "identificador": "trabajo",
+    "imagen": "assets/img/categorias/trabajo.png"
+},
+{
+    "id": "4",
+    "nombre": "Ambientales",
+    "identificador": "ambientales",
+    "imagen": "assets/img/categorias/ambientales.png"
+  }
+]

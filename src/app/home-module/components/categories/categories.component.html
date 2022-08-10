@@ -1,0 +1,15 @@
+<ngx-spinner size = "large" [fullScreen] = "true"></ngx-spinner>
+<div fxLayout="column">
+
+    <div class="main-title">Seleccione una categoría para ver los proyectos</div>
+    <div fxFlex fxLayout.lt-sm="column" fxLayout.gt-md="row wrap" fxLayout.md="row wrap" fxLayoutAlign.gt-md="center center" fxLayoutAlign.md="center center">
+        <mat-card fxFlex.lt-sm="100" fxFlex.gt-md="25" fxFlex.md="25" *ngFor="let category of categories; let i = index" class="card"  [routerLink]="['/proyectos/categoria', category.id]" routerLinkActive="router-link-active" >
+            <mat-card-content>
+                <img mat-card-image src="{{category.imagen}}" alt="{{category.nombre}}">
+            </mat-card-content>
+            <mat-card-actions>
+                <div class="card-title">{{ category.nombre }}</div> 
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

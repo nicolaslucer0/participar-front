@@ -1,0 +1,25 @@
+<ngx-spinner size = "large" [fullScreen] = "true"></ngx-spinner>
+
+<header class="fadeInDown" id="navbar">
+
+  <mat-toolbar color="primary" class="navigation-toolbar">
+    <div fxHide.gt-xs>
+      <button mat-icon-button (click)="onToggleSidenav()">
+        <mat-icon>menu</mat-icon>
+      </button>
+    </div>
+    <a class="logo" fxShow="true" fxShow.gt-xs="true" [routerLink]="['/']" routerLinkActive="router-link-active"><img src="assets/img/logo/logo-claro.png"></a>
+    <div fxShow="true" fxHide.lt-md>
+      <a mat-button [routerLink]="['/categorias']" routerLinkActive="router-link-active" >Proyectos</a>
+    </div>
+    <span class="navigation-spacer"></span>
+    <mat-nav-list class="navigation-list" fxLayout="row" fxShow="false" fxShow.gt-xs="true">
+      <a  *ngIf="isLogged && isAdmin" mat-list-item [routerLink]="['/admin/users']" routerLinkActive="router-link-active" id="users"> Administrar usuarios<mat-icon>supervised_user_circle</mat-icon></a>
+      <a  *ngIf="isLogged && isAdmin" mat-list-item [routerLink]="['/admin/reports']" routerLinkActive="router-link-active" id="reports"> Reportes <mat-icon>bar_chart</mat-icon></a>
+      <a  *ngIf="!isLogged" mat-list-item id=contact-fab-button [routerLink]="['/login']">Iniciar &nbsp;<mat-icon>account_circle</mat-icon></a>
+      <a  *ngIf="isLogged" mat-list-item id=contact-fab-button [routerLink]="['/cuenta']" routerLinkActive="router-link-active" > Mi cuenta<mat-icon>account_circle</mat-icon></a>
+      <a  *ngIf="isLogged" mat-list-item (click)="logout()"  id=logout-button> Salir<mat-icon>arrow_right_alt</mat-icon></a>
+    </mat-nav-list>
+  </mat-toolbar>
+</header>
+<div [ngClass]="{'spacer-transparent' : url === '/'}" class="spacer"></div>
