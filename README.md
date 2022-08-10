@@ -6,6 +6,8 @@
 ```bash
 > git clone https://github.com/nicolaslucer0/participar-front
 > git checkout main
+> npm install -g npm
+> npm install -g @angular/cli
 ```
 
 > install npm and install Angular CLI
